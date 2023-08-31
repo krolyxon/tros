@@ -19,63 +19,62 @@ int list[] = {40, 78, 94, 62, 68, 74, 56, 55, 88, 55, 59, 73,
               19, 32, 81, 95, 71, 63, 15, 41, 11, 38, 86};
 
 int score = 100;
+int level = 1;
+int size = 5;
 
 void decrement_score(enum Difficulty diff);
+void level_up();
+int getrand();
 enum Difficulty get_difficulty();
 
 int main(int argc, char *argv[]) {
   // Get a random number to run a random algorithm
   int guess;
-  srand(time(0));
-  int random_number = (rand() % (UPPER - LOWER + 1)) + LOWER;
+  int random_number = getrand();
 
   printf(COLOR_RED);
   print_ascii("./assets/banner.txt");
-  int size;
   enum Difficulty diff = get_difficulty();
-  switch (diff) {
-  case Easy:
-    size = 5;
-    break;
-  case Medium:
-    size = 10;
-    break;
-  case Hard:
-    size = 23;
-    break;
-  }
 
-  printf(BAR);
-  switch (random_number) {
-  case 1:
-    bubblesort(list, size);
-    break;
-  case 2:
-    insertionsort(list, size);
-    break;
-  case 3:
-    selectionsort(list, size);
-    break;
-  // case 4: radixsort(list); break;
-  default:
-    break;
-  }
+  while (level > 0 && level <= 10) {
+    printf(BAR);
+    switch (random_number) {
+    case 1:
+      bubblesort(list, size);
+      break;
+    case 2:
+      insertionsort(list, size);
+      break;
+    case 3:
+      selectionsort(list, size);
+      break;
+    // case 4: radixsort(list); break;
+    default:
+      break;
+    }
 
-  printf(BAR);
-  printf("1. BubbleSort\n");
-  printf("2. InsertionSort\n");
-  printf("3. SelectionSort\n");
-  printf("4. RadixSort\n");
-  printf("Enter your guess: ");
-  scanf("%d", &guess);
-  if (guess == random_number) {
-    printf("Congratulations!!! Your answer was right!!\n");
-    score += 10;
-  } else {
-    decrement_score(diff);
+    printf(BAR);
+    printf("1. BubbleSort\n");
+    printf("2. InsertionSort\n");
+    printf("3. SelectionSort\n");
+    printf("4. RadixSort\n");
+    printf("Enter your guess: ");
+    scanf("%d", &guess);
+    if (guess == random_number) {
+      printf("Congratulations!!! Your answer was right!!\n");
+      score += 10;
+      level_up();
+    } else {
+      decrement_score(diff);
+    }
+    printf("Score: %d\n", score);
   }
-  printf("Score: %d\n", score);
   return 0;
+}
+
+int getrand() {
+  srand(time(0));
+  return (rand() % (UPPER - LOWER + 1)) + LOWER;
 }
 
 void decrement_score(enum Difficulty diff) {
@@ -114,4 +113,9 @@ enum Difficulty get_difficulty() {
     break;
   }
   return difficulty;
+}
+
+void level_up() {
+  level++;
+  size += 3;
 }
