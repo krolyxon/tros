@@ -15,8 +15,7 @@ enum Difficulty {
   Hard,
 };
 
-int list[] = {40, 78, 94, 62, 68, 74, 56, 55, 88, 55, 59, 73,
-              19, 32, 81, 95, 71, 63, 15, 41, 11, 38, 86};
+int list[35];
 
 int score = 100;
 int level = 1;
@@ -24,28 +23,34 @@ int size = 5;
 
 void decrement_score(enum Difficulty diff);
 void level_up();
+void level_down();
 int getrand();
+void getarr(int size);
 enum Difficulty get_difficulty();
 
 int main(int argc, char *argv[]) {
   // Get a random number to run a random algorithm
+  srand(time(0));
   int guess;
-  int random_number = getrand();
 
   printf(COLOR_RED);
   print_ascii("./assets/banner.txt");
   enum Difficulty diff = get_difficulty();
 
   while (level > 0 && level <= 10) {
+  int random_number = getrand();
     printf(BAR);
     switch (random_number) {
     case 1:
+      getarr(size);
       bubblesort(list, size);
       break;
     case 2:
+      getarr(size);
       insertionsort(list, size);
       break;
     case 3:
+      getarr(size);
       selectionsort(list, size);
       break;
     // case 4: radixsort(list); break;
@@ -66,6 +71,7 @@ int main(int argc, char *argv[]) {
       level_up();
     } else {
       decrement_score(diff);
+      level_down();
     }
     printf("Score: %d\n", score);
   }
@@ -73,7 +79,6 @@ int main(int argc, char *argv[]) {
 }
 
 int getrand() {
-  srand(time(0));
   return (rand() % (UPPER - LOWER + 1)) + LOWER;
 }
 
@@ -116,6 +121,29 @@ enum Difficulty get_difficulty() {
 }
 
 void level_up() {
+  if (level == 10) {
+    printf("Congratulations!! You WON the game");
+    exit(1);
+  }
   level++;
   size += 3;
+  printf(COLOR_BOLD COLOR_RED
+         "You have been leveled up to Level %d\n" COLOR_OFF,
+         level);
+}
+
+void level_down() {
+  if (level >= 2) {
+    level--;
+    size -= 3;
+  } else {
+    printf("Too many wrong answers!!, You Lose!");
+    exit(1);
+  }
+}
+
+void getarr(int size) {
+  for (int i = 0; i < size; i++) {
+    list[i] = rand() % 100;
+  }
 }
