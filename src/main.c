@@ -122,6 +122,7 @@ enum Difficulty get_difficulty() {
 
 void level_up() {
   if (level == 10) {
+    print_ascii("./assets/winner.txt");
     printf("Congratulations!! You WON the game");
     exit(1);
   }
