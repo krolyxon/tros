@@ -9,11 +9,11 @@ const int MEDIUM_SCORE_DECREMENT = 20;
 const int LOWER = 1;
 const int UPPER = 3;
 
-enum Difficulty {
+typedef enum Difficulty {
   Easy,
   Medium,
   Hard,
-};
+} Difficulty;
 
 int list[35];
 
@@ -21,12 +21,12 @@ int score = 100;
 int level = 1;
 int size = 5;
 
-void decrement_score(enum Difficulty diff);
+void decrement_score(Difficulty diff);
 void level_up();
 void level_down();
 int getrand();
 void getarr(int size);
-enum Difficulty get_difficulty();
+Difficulty get_difficulty();
 
 int main(int argc, char *argv[]) {
   // Get a random number to run a random algorithm
@@ -35,10 +35,10 @@ int main(int argc, char *argv[]) {
 
   printf(COLOR_RED);
   print_ascii("./assets/banner.txt");
-  enum Difficulty diff = get_difficulty();
+  Difficulty diff = get_difficulty();
 
   while (level > 0 && level <= 10) {
-  int random_number = getrand();
+    int random_number = getrand();
     printf(BAR);
     switch (random_number) {
     case 1:
@@ -63,6 +63,7 @@ int main(int argc, char *argv[]) {
     printf("2. InsertionSort\n");
     printf("3. SelectionSort\n");
     printf("4. RadixSort\n");
+    printf("%d", random_number);
     printf("Enter your guess: ");
     scanf("%d", &guess);
     if (guess == random_number) {
@@ -78,11 +79,9 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-int getrand() {
-  return (rand() % (UPPER - LOWER + 1)) + LOWER;
-}
+int getrand() { return (rand() % (UPPER - LOWER + 1)) + LOWER; }
 
-void decrement_score(enum Difficulty diff) {
+void decrement_score(Difficulty diff) {
   if (diff == Easy) {
     printf("Wrong Answer!! The score will be decremented by 10\n");
     score -= EASY_SCORE_DECREMENT;
@@ -95,9 +94,9 @@ void decrement_score(enum Difficulty diff) {
   }
 }
 
-enum Difficulty get_difficulty() {
+Difficulty get_difficulty() {
   int choice;
-  enum Difficulty difficulty;
+  Difficulty difficulty;
   printf(COLOR_CYAN "       CHOOSE DIFFICULTY\n" COLOR_OFF);
   printf(COLOR_RED BAR COLOR_OFF);
   printf("1. Easy\n");
