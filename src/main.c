@@ -5,10 +5,10 @@
 #include <time.h>
 // https://texteditor.com/multiline-text-art/
 
-const int EASY_SCORE_DECREMENT = 10;
-const int MEDIUM_SCORE_DECREMENT = 20;
-const int LOWER = 1;
-const int UPPER = 4;
+static const int EASY_SCORE_DECREMENT = 10;
+static const int MEDIUM_SCORE_DECREMENT = 20;
+static const int LOWER = 1;
+static const int UPPER = 4;
 
 typedef enum Difficulty {
   Easy,
@@ -18,9 +18,9 @@ typedef enum Difficulty {
 
 int list[35];
 
-int score = 100;
-int level = 1;
-int size = 5;
+static int score = 0;
+static int level = 1;
+static int size = 5;
 
 // Declaring Functions
 void decrement_score(Difficulty diff);
@@ -119,6 +119,9 @@ Difficulty get_difficulty() {
     break;
   case 3:
     difficulty = Hard;
+    break;
+    default:
+    printf(COLOR_RED "Invalid Choice. Defaulting to Medium\n" COLOR_OFF);
     break;
   }
   return difficulty;
