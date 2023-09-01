@@ -1,7 +1,7 @@
 ## WIP WIP WIP
 
 # TODO
-- [ ] Algorithms to be implemented:
+- [x] Algorithms to be implemented:
     - [x] Bubblesort
     - [x] SelectionSort
     - [x] InsertionSort
@@ -12,14 +12,14 @@
 ## Levels:
 1: 5 elems\
 2: 8 elems\
-3: 10 elems\
-4: 13 elems\
-5: 16 elems\
-6: 19 elems\
-7: 22 elems\
-8: 25 elems\
-9: 28 elems\
-10: 30 elems\
+3: 11 elems\
+4: 14 elems\
+5: 17 elems\
+6: 20 elems\
+7: 23 elems\
+8: 26 elems\
+9: 29 elems\
+10: 32 elems
 
 
 
