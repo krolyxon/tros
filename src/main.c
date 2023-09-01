@@ -57,6 +57,7 @@ int main(int argc, char *argv[]) {
       selectionsort(list, size);
       break;
     case 4:
+      getarr(size);
       radixsort(list, size);
       break;
     default:
@@ -122,6 +123,7 @@ Difficulty get_difficulty() {
     break;
     default:
     printf(COLOR_RED "Invalid Choice. Defaulting to Medium\n" COLOR_OFF);
+    difficulty = Medium;
     break;
   }
   return difficulty;
