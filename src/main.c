@@ -91,10 +91,10 @@ void decrement_score(Difficulty diff) {
                                 "The score will be decremented by 10\n");
     score -= EASY_SCORE_DECREMENT;
   } else if (diff == Medium) {
-    printf("Wrong Answer!! The score will be decremented by 20\n");
+    printf("Wrong Answer!! The score will be decremented by 20.\n");
     score -= MEDIUM_SCORE_DECREMENT;
   } else {
-    printf(COLOR_RED COLOR_BOLD "Wrong Answer!! You Lose!!" COLOR_OFF);
+    printf(COLOR_RED COLOR_BOLD "Wrong Answer!! You Lose!!\n" COLOR_OFF);
     exit(1);
   }
 }
@@ -147,7 +147,7 @@ void level_down() {
     level--;
     size -= 3;
   } else {
-    printf("Too many wrong answers!!, You Lose!");
+    printf("Too many wrong answers!! " COLOR_RED COLOR_BOLD "You Lose!!\n" COLOR_OFF);
     exit(1);
   }
 }
