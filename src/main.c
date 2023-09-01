@@ -94,8 +94,8 @@ void decrement_score(Difficulty diff) {
     printf("Wrong Answer!! The score will be decremented by 20\n");
     score -= MEDIUM_SCORE_DECREMENT;
   } else {
-    printf("Wrong Answer!! The score will be reseted to 0\n");
-    score = 0;
+    printf(COLOR_RED COLOR_BOLD "Wrong Answer!! You Lose!!" COLOR_OFF);
+    exit(1);
   }
 }
 

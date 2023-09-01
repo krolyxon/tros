@@ -6,7 +6,8 @@ The game has 3 difficulty modes:
 3. **Hard**: You lose the game when you make a single wrong guess.
 
 ## Levels
-- There are total 10 levels and the number of elements the list has depends upon it. The levels are as follows:
+- There are total 10 levels and the number of elements the list has depends upon it.
+- When you reach the level 10 and make the right guess, You win the game.
 
 | Level | Elements |
 |-------|----------|
@@ -17,11 +18,11 @@ The game has 3 difficulty modes:
 | 5     | 17 Elements      |
 | 6     | 20 Elements      |
 | 7     | 23 Elements      |
-| 8     | 26 Elements      | 
-| 9     | 29 Elements      | 
+| 8     | 26 Elements      |
+| 9     | 29 Elements      |
 | 10    | 32 Elements      |
 
-At the moment the score system is useless, and doesnt really make a difference on the gameplay, but i do plan on adding features, such as high score.
+At the moment the score system is useless, and doesn't really make a difference on the gameplay, but i do plan on adding features, such as high score.
 
 # TODO
 - [x] Algorithms to be implemented:
@@ -29,8 +30,7 @@ At the moment the score system is useless, and doesnt really make a difference o
     - [x] SelectionSort
     - [x] InsertionSort
     - [x] Radix Sort
-- [x] Implement Score system
+- [ ] Score system
+    - [x] Implement Score system
+    - [ ] Make the score system somewhat useful
 - [ ] Code Refactoring/Cleaning
-
-
-
