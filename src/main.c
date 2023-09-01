@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 // https://texteditor.com/multiline-text-art/
+
 const int EASY_SCORE_DECREMENT = 10;
 const int MEDIUM_SCORE_DECREMENT = 20;
 const int LOWER = 1;
@@ -21,6 +22,7 @@ int score = 100;
 int level = 1;
 int size = 5;
 
+// Declaring Functions
 void decrement_score(Difficulty diff);
 void level_up();
 void level_down();
@@ -33,13 +35,14 @@ int main(int argc, char *argv[]) {
   srand(time(0));
   int guess;
 
-  printf(COLOR_RED);
+  clearscreen();
+  printf(COLOR_CYAN);
   print_ascii("./assets/banner.txt");
   Difficulty diff = get_difficulty();
 
   while (level > 0 && level <= 10) {
     int random_number = getrand();
-    printf(BAR);
+    printf(COLOR_GREEN BAR COLOR_OFF);
     switch (random_number) {
     case 1:
       getarr(size);
@@ -58,22 +61,21 @@ int main(int argc, char *argv[]) {
       break;
     }
 
-    printf(BAR);
-    printf("1. BubbleSort\n");
-    printf("2. InsertionSort\n");
-    printf("3. SelectionSort\n");
-    printf("4. RadixSort\n");
-    printf("%d", random_number);
+    printf(COLOR_GREEN BAR COLOR_OFF);
+    printf(COLOR_BOLD "[1] " COLOR_OFF "Bubble Sort\n");
+    printf(COLOR_BOLD "[2] " COLOR_OFF "Insertion Sort\n");
+    printf(COLOR_BOLD "[3] " COLOR_OFF "Selection Sort\n");
+    printf(COLOR_BOLD "[4] " COLOR_OFF "Radix Sort\n");
     printf("Enter your guess: ");
     scanf("%d", &guess);
     if (guess == random_number) {
-      printf("Congratulations!!! Your answer was right!!\n");
       score += 10;
       level_up();
     } else {
       decrement_score(diff);
       level_down();
     }
+
     printf("Score: %d\n", score);
   }
   return 0;
@@ -83,7 +85,8 @@ int getrand() { return (rand() % (UPPER - LOWER + 1)) + LOWER; }
 
 void decrement_score(Difficulty diff) {
   if (diff == Easy) {
-    printf("Wrong Answer!! The score will be decremented by 10\n");
+    printf(COLOR_BOLD COLOR_RED "Wrong Answer!!" COLOR_OFF
+                                "The score will be decremented by 10\n");
     score -= EASY_SCORE_DECREMENT;
   } else if (diff == Medium) {
     printf("Wrong Answer!! The score will be decremented by 20\n");
@@ -97,12 +100,12 @@ void decrement_score(Difficulty diff) {
 Difficulty get_difficulty() {
   int choice;
   Difficulty difficulty;
-  printf(COLOR_CYAN "       CHOOSE DIFFICULTY\n" COLOR_OFF);
-  printf(COLOR_RED BAR COLOR_OFF);
-  printf("1. Easy\n");
-  printf("2. Medium\n");
-  printf("3. Hard\n");
-  printf(BAR);
+  printf(COLOR_BOLD COLOR_RED "       CHOOSE DIFFICULTY\n");
+  printf(COLOR_GREEN BAR COLOR_OFF);
+  printf(COLOR_BOLD "[1]" COLOR_OFF " Easy\n");
+  printf(COLOR_BOLD "[2]" COLOR_OFF " Medium\n");
+  printf(COLOR_BOLD "[3]" COLOR_OFF " Hard\n" COLOR_OFF);
+  printf(COLOR_GREEN BAR COLOR_OFF);
   printf("Enter difficulty: ");
   scanf("%d", &choice);
   switch (choice) {
@@ -121,13 +124,15 @@ Difficulty get_difficulty() {
 
 void level_up() {
   if (level == 10) {
+    printf(COLOR_YELLOW);
     print_ascii("./assets/winner.txt");
+    printf(COLOR_OFF);
     printf("Congratulations!! You WON the game");
     exit(1);
   }
   level++;
   size += 3;
-  printf(COLOR_BOLD COLOR_RED
+  printf(COLOR_BOLD COLOR_GREEN BAR
          "You have been leveled up to Level %d\n" COLOR_OFF,
          level);
 }

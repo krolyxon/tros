@@ -1,11 +1,13 @@
 ## WIP WIP WIP
 
 # TODO
-- [] Implement Score system
-Difficulties: Easy, Medium, Hard\
-Easy = +10, -10\
-Medium = +10, -20\
-Hard = +10, score = 0
+- [] Algorithms to be implemented:
+    - [x] Bubblesort
+    - [x] SelectionSort
+    - [x] InsertionSort
+    - [] Radix Sort
+- [x] Implement Score system
+- [] Code Refactoring/Cleaning
 
 ## Levels:
 1: 5 elems\
@@ -20,9 +22,4 @@ Hard = +10, score = 0
 10: 30 elems\
 
 
-# Algorithms to be implemented:
-- [x] Bubblesort
-- [x] SelectionSort
-- [x] InsertionSort
-- [] Radix Sort
 

@@ -17,3 +17,4 @@
 void printarr(int a[], int n);
 void print_ascii(char *filename);
 void swap(int a[], int i, int j);
+void clearscreen();
