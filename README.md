@@ -24,6 +24,9 @@ The game has 3 difficulty modes:
 
 At the moment the score system is useless, and doesn't really make a difference on the gameplay, but i do plan on adding features, such as high score.
 
+## TROS in Action
+![](https://raw.githubusercontent.com/krolyxon/tros/master/tros.gif)
+
 # TODO
 - [x] Algorithms to be implemented:
     - [x] Bubblesort
