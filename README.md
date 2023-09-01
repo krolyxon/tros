@@ -1,12 +1,12 @@
 # TROS
 This is a CLI game where you have to guess the sorting algorithm used to sort a randomly generated list of numbers based on the passes displayed on the screen.
 The game has 3 difficulty modes:
-1. **Easy**: When you make a wrong guess, you score will be decremented by 10 and level by 1.
+1. **Easy**: When you make a wrong guess, your score will be decremented by 10 and level by 1.
 2. **Medium**: Score will be decremented by 20 and level by 10.
 3. **Hard**: You lose the game when you make a single wrong guess.
 
 ## Levels
-- There are total 10 levels and the number of elements the list has depends upon it.
+- There are total 10 levels and the number of elements in the list depends upon it.
 - When you reach the level 10 and make the right guess, You win the game.
 
 | Level | Elements |
