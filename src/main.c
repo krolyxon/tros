@@ -8,7 +8,7 @@
 const int EASY_SCORE_DECREMENT = 10;
 const int MEDIUM_SCORE_DECREMENT = 20;
 const int LOWER = 1;
-const int UPPER = 3;
+const int UPPER = 4;
 
 typedef enum Difficulty {
   Easy,
@@ -56,7 +56,9 @@ int main(int argc, char *argv[]) {
       getarr(size);
       selectionsort(list, size);
       break;
-    // case 4: radixsort(list); break;
+    case 4:
+      radixsort(list, size);
+      break;
     default:
       break;
     }

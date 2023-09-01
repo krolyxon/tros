@@ -1,13 +1,13 @@
 ## WIP WIP WIP
 
 # TODO
-- [] Algorithms to be implemented:
+- [ ] Algorithms to be implemented:
     - [x] Bubblesort
     - [x] SelectionSort
     - [x] InsertionSort
-    - [] Radix Sort
+    - [x] Radix Sort
 - [x] Implement Score system
-- [] Code Refactoring/Cleaning
+- [ ] Code Refactoring/Cleaning
 
 ## Levels:
 1: 5 elems\
