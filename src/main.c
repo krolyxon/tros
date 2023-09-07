@@ -10,7 +10,7 @@ static const int MEDIUM_SCORE_DECREMENT = 20;
 static const int LOWER = 1;
 static const int UPPER = 4;
 
-typedef enum Difficulty {
+typedef enum {
   Easy,
   Medium,
   Hard,
