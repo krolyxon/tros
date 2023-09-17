@@ -5,11 +5,27 @@
 #include <time.h>
 // https://texteditor.com/multiline-text-art/
 
+const char BANNER[][300] = {
+    "    ╔════╗ ╔═══╗ ╔═══╗ ╔═══╗", "    ║╔╗╔╗║ ║╔═╗║ ║╔═╗║ ║╔═╗║",
+    "    ╚╝║║╚╝ ║╚═╝║ ║║ ║║ ║╚══╗", "      ║║   ║╔╗╔╝ ║║ ║║ ╚══╗║",
+    "     ╔╝╚╗  ║║║╚╗ ║╚═╝║ ║╚═╝║", "     ╚══╝  ╚╝╚═╝ ╚═══╝ ╚═══╝",
+};
+
+const char WINNER[][300] = {
+    "──────────────────────────────────────────",
+    "   ╔╗╔╗╔╗╔══╗╔═╗ ╔╗╔═╗ ╔╗╔═══╗╔═══╗╔╗╔╗",
+    "   ║║║║║║╚╣╠╝║║╚╗║║║║╚╗║║║╔══╝║╔═╗║║║║║",
+    "   ║║║║║║ ║║ ║╔╗╚╝║║╔╗╚╝║║╚══╗║╚═╝║║║║║",
+    "   ║╚╝╚╝║ ║║ ║║╚╗║║║║╚╗║║║╔══╝║╔╗╔╝╚╝╚╝",
+    "   ╚╗╔╗╔╝╔╣╠╗║║ ║║║║║ ║║║║╚══╗║║║╚╗╔╗╔╗",
+    "    ╚╝╚╝ ╚══╝╚╝ ╚═╝╚╝ ╚═╝╚═══╝╚╝╚═╝╚╝╚╝",
+    "──────────────────────────────────────────",
+};
+
 static const int EASY_SCORE_DECREMENT = 10;
 static const int MEDIUM_SCORE_DECREMENT = 20;
 static const int LOWER = 1;
 static const int UPPER = 4;
-
 typedef enum {
   Easy,
   Medium,
@@ -36,8 +52,10 @@ int main(int argc, char *argv[]) {
   int guess;
 
   clearscreen();
-  printf(COLOR_CYAN);
-  print_ascii("./assets/banner.txt");
+  printf(COLOR_CYAN BAR);
+  for (int i = 0; i < 6; i++) {
+    printf("%s\n", BANNER[i]);
+  }
   Difficulty diff = get_difficulty();
 
   while (level > 0 && level <= 10) {
@@ -103,6 +121,7 @@ void decrement_score(Difficulty diff) {
 Difficulty get_difficulty() {
   int choice;
   Difficulty difficulty;
+  printf(COLOR_GREEN BAR COLOR_OFF);
   printf(COLOR_BOLD COLOR_RED "       CHOOSE DIFFICULTY\n");
   printf(COLOR_GREEN BAR COLOR_OFF);
   printf(COLOR_BOLD "[1]" COLOR_OFF " Easy\n");
@@ -121,7 +140,7 @@ Difficulty get_difficulty() {
   case 3:
     difficulty = Hard;
     break;
-    default:
+  default:
     printf(COLOR_RED "Invalid Choice. Defaulting to Medium\n" COLOR_OFF);
     difficulty = Medium;
     break;
@@ -132,7 +151,9 @@ Difficulty get_difficulty() {
 void level_up() {
   if (level == 10) {
     printf(COLOR_YELLOW);
-    print_ascii("./assets/winner.txt");
+    for (int i = 0; i < 8; i++) {
+      printf("%s\n", WINNER[i]);
+    }
     printf(COLOR_OFF);
     printf("Congratulations!! You WON the game");
     exit(1);
@@ -149,7 +170,8 @@ void level_down() {
     level--;
     size -= 3;
   } else {
-    printf("Too many wrong answers!! " COLOR_RED COLOR_BOLD "You Lose!!\n" COLOR_OFF);
+    printf("Too many wrong answers!! " COLOR_RED COLOR_BOLD
+           "You Lose!!\n" COLOR_OFF);
     exit(1);
   }
 }
